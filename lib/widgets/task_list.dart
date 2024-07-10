@@ -6,7 +6,7 @@ ListView TaskList() {
     children: [
       TaskTile(),
       TaskTile(),
-      TaskTile()
+      TaskTile(),
     ],
   );
 }

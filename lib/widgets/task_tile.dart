@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 ListTile TaskTile() {
   return ListTile(
-    title: Text('first task'),
+    title: const Text('first task'),
     trailing: Checkbox(value: false, onChanged: (bool? value) {  },),
   );
 }
