@@ -1,12 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:taskbuddy/widgets/task_list.dart';
 import 'package:taskbuddy/screens/add_task_screen.dart';
+import 'package:taskbuddy/models/Task.dart';
 
-class TasksScreens extends StatelessWidget {
+class TasksScreens extends StatefulWidget {
+
+
   TasksScreens({super.key});
 
+  @override
+  State<TasksScreens> createState() => _TasksScreensState();
+}
+
+class _TasksScreensState extends State<TasksScreens> {
+  List<Task> tasks = [
+    Task(name: 'Do Laundery'),
+    Task(name: 'bring the milk'),
+    Task(name: 'Complete the pending homework')
+  ];
+
   Widget buildBottomSheet(BuildContext context){
-    return AddTaskScreen();
+    return AddTaskScreen(addSTaskcreenCallback: (newTask){
+      print(newTask);
+      setState(() {
+        tasks.add(Task(name: newTask));
+      });
+      Navigator.pop(context);
+    },
+    );
   }
 
   @override
@@ -24,7 +45,7 @@ class TasksScreens extends StatelessWidget {
         children: [
           Container(
               padding: const EdgeInsets.only(top: 60, left: 0, bottom: 30, right: 30),
-              child: const Column(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CircleAvatar(
@@ -40,7 +61,7 @@ class TasksScreens extends StatelessWidget {
                       color: Colors.white
                   ),
                   ),
-                  Text('12 tasks', style: TextStyle(
+                  Text('${tasks.length}', style: TextStyle(
                       fontSize: 18,
                       color: Colors.white
                   ),
@@ -57,7 +78,7 @@ class TasksScreens extends StatelessWidget {
                         topLeft: Radius.circular(20),
                         topRight: Radius.circular(20))
                 ),
-                child: TaskList()
+                child: TaskList(tasks: tasks,)
             ),
           ),
 
@@ -65,6 +86,5 @@ class TasksScreens extends StatelessWidget {
       ),
     );
   }
-
 }
 

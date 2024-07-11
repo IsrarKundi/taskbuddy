@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 
 class AddTaskScreen extends StatelessWidget {
-  const AddTaskScreen({super.key});
+
+  final Function addSTaskcreenCallback;
+
+  const AddTaskScreen({required this.addSTaskcreenCallback});
 
   @override
   Widget build(BuildContext context) {
+
+    String newTask = '';
     return Padding(
-      padding: const EdgeInsets.all(30.0),
+      padding: const EdgeInsets.only(top: 5, right: 30, left: 30, bottom: 30),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -28,10 +33,15 @@ class AddTaskScreen extends StatelessWidget {
                 borderSide: BorderSide(color: Colors.lightBlueAccent, width: 4.0), // Bottom border color and width when focused
               ),
             ),
+            onChanged: (newVAlue){
+              newTask = newVAlue;
+            },
           ),
-          SizedBox(height: 40,),
+          SizedBox(height: 15,),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              addSTaskcreenCallback(newTask);
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.lightBlueAccent,
               minimumSize: Size(double.infinity, 50), // Set the height if needed
