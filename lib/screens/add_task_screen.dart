@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:taskbuddy/models/task_data.dart';
 
 class AddTaskScreen extends StatelessWidget {
 
-  final Function addSTaskcreenCallback;
-
-  const AddTaskScreen({required this.addSTaskcreenCallback});
 
   @override
   Widget build(BuildContext context) {
 
-    String newTask = '';
+    late String newTask;
     return Padding(
       padding: const EdgeInsets.only(top: 5, right: 30, left: 30, bottom: 30),
       child: Column(
@@ -33,14 +32,15 @@ class AddTaskScreen extends StatelessWidget {
                 borderSide: BorderSide(color: Colors.lightBlueAccent, width: 4.0), // Bottom border color and width when focused
               ),
             ),
-            onChanged: (newVAlue){
-              newTask = newVAlue;
+            onChanged: (newValue){
+              newTask = newValue;
             },
           ),
           SizedBox(height: 15,),
           ElevatedButton(
             onPressed: () {
-              addSTaskcreenCallback(newTask);
+              Provider.of<Taskdata>(context, listen: false).addTask(newTask);
+              Navigator.pop(context);
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.lightBlueAccent,

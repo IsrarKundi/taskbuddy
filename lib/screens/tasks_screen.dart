@@ -7,16 +7,9 @@ class TasksScreens extends StatelessWidget {
 
 
 
-  Widget buildBottomSheet(BuildContext context){
-    return AddTaskScreen(addSTaskcreenCallback: (newTask){
-      print(newTask);
-      // setState(() {
-      //   tasks.add(Task(name: newTask));
-      // });
-      Navigator.pop(context);
-    },
-    );
-  }
+  // Widget buildBottomSheet(BuildContext context){
+  //   return AddTaskScreen();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +17,7 @@ class TasksScreens extends StatelessWidget {
       backgroundColor: Colors.lightBlueAccent,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          showModalBottomSheet(context: context, builder: buildBottomSheet);
+          showModalBottomSheet(context: context, builder: (context) => AddTaskScreen());
         },
         backgroundColor: Colors.lightBlueAccent,
         child: const Icon(Icons.add, color: Colors.white,),
