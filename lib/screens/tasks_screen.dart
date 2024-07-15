@@ -3,13 +3,9 @@ import 'package:taskbuddy/models/task_data.dart';
 import 'package:taskbuddy/widgets/task_list.dart';
 import 'package:taskbuddy/screens/add_task_screen.dart';
 import 'package:provider/provider.dart';
+
+
 class TasksScreens extends StatelessWidget {
-
-
-
-  // Widget buildBottomSheet(BuildContext context){
-  //   return AddTaskScreen();
-  // }
 
   @override
   Widget build(BuildContext context) {
